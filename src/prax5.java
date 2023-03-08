@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class prax5 {
     /**
      *
@@ -34,6 +36,39 @@ public class prax5 {
         return uusMaatriks;
     }
 
+    /**
+     *
+     * @param sisendMaatriks
+     * @return maatriks,mille iga element on asendatud tema naabrite summaga
+     */
+
+    public static int[][] ül56(int[][] sisendMaatriks){
+        int[][] uusMaatriks=new int[sisendMaatriks.length][sisendMaatriks[0].length];
+        int naabriteSumma;
+        for (int rida = 0; rida < sisendMaatriks.length; rida++) {
+            for (int veerg = 0; veerg < sisendMaatriks[0].length; veerg++) {
+                naabriteSumma=0;
+                if (rida>0){// ülemine naaber
+                    naabriteSumma+=sisendMaatriks[rida-1][veerg];
+                }
+                if (rida<sisendMaatriks.length-1){// alumine naaber
+                    naabriteSumma+=sisendMaatriks[rida+1][veerg];
+                }
+                if (veerg>0){// vasak naaber
+                    naabriteSumma+=sisendMaatriks[rida][veerg-1];
+                }
+                if (veerg<sisendMaatriks[0].length-1){// vasak naaber
+                    naabriteSumma+=sisendMaatriks[rida][veerg+1];
+                }
+                uusMaatriks[rida][veerg]=naabriteSumma;
+
+
+            }
+
+        }
+        return uusMaatriks;
+    }
+
     public static void main(String[] args) {
        int[][] maatriks=(ül51(new int[][]{{1,2,3},{1,2,3},{1,2,3}},1,2));
         for (int i = 0; i < maatriks.length; i++) {
@@ -43,6 +78,13 @@ public class prax5 {
             }
 
         }
+        int[][]maatriks2 = (ül56(new int[][]{{1,2,3},{4,5,6},{7,8,9}}));
+
+        for (int i = 0; i < maatriks2.length; i++) {
+            for (int j = 0; j < maatriks2[0].length; j++) {
+                System.out.println(maatriks2[i][j]);
+
+            }}
 
 
     }
